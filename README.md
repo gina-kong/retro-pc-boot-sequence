@@ -7,13 +7,13 @@ This BIOS boot sequence is brought to you by:
 
 <table style="border-collapse: collapse; border: none;">
   <tr>
-    <td align="center" style="border: none; vertical-align: bottom">
+    <td align="center" style="border: none; vertical-align: bottom; background-color: black; color: white;">
       <img src="https://github.com/gina-kong/retro-pc-boot-sequence/blob/2ac655d78695e8025d6dff3e6bddd2c8ce3030eb/src/assets/trophy.png" height="100" />
-      <br><b><s>Award<s> Trophy Software</b>
+      <br><b><s>Award</s> Trophy Software</b>
     </td>
-    <td align="center" style="border: none; vertical-align: bottom">
-      <img src="https://github.com/gina-kong/retro-pc-boot-sequence/blob/2ac655d78695e8025d6dff3e6bddd2c8ce3030eb/src/assets/luminosity.png" width="150" />
-      <br><b><s>Energy<s> Luminosity Star</b>
+    <td align="center" style="border: none; vertical-align: bottom; background-color: black; color: white;">
+      <img src="https://github.com/gina-kong/retro-pc-boot-sequence/blob/2ac655d78695e8025d6dff3e6bddd2c8ce3030eb/src/assets/luminosity.png" width="200" />
+      <br><b><s>Energy</s> Luminosity Star</b>
     </td>
   </tr>
 </table>
