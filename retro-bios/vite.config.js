@@ -3,12 +3,12 @@ import { extname, relative, resolve } from 'path'
 import { fileURLToPath } from 'node:url'
 import { glob } from 'glob'
 import react from '@vitejs/plugin-react'
-import { libInjectCss } from 'vite-plugin-lib-inject-css'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig({
   plugins: [
     react(),
-    libInjectCss,
+    cssInjectedByJsPlugin(),
   ],
   build: {
     lib: {
