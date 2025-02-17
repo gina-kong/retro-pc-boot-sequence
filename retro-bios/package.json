@@ -1,7 +1,7 @@
 {
-  "name": "retro-bios",
-  "private": true,
-  "version": "0.0.0",
+  "name": "kg-retro-bios",
+  "private": false,
+  "version": "0.0.3",
   "type": "module",
   "main": "dist/main.js",
   "files": [
@@ -15,24 +15,26 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react": "^7.37.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-react-refresh": "^0.4.16",
     "glob": "^10.4.5",
     "globals": "^15.14.0",
-    "vite": "^6.1.0",
-    "vite-plugin-lib-inject-css": "^2.2.1"
+    "vite": "^6.0.5"
   },
   "sideEffects": [
     "**/*.css"
-  ]
+  ],
+  "dependencies": {
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  }
 }
