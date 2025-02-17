@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'PerfectDOS';
+  src: url("/assets/fonts/Perfect DOS VGA 437.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h3 {
+  font-family: 'PerfectDOS';
+  margin: 0;
+  color: rgb(172, 172, 172);
+}
+
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  margin: 0;
+  width: 100%;
+  background-color: black;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.energyLogo {
+  height: 25%;
+  margin: 5%;
+  position: fixed;
+  right: 10px;
+}
+
+.trophyLogo {
+  margin-top: 4px;
+  margin-right: 8px;
+  max-height: 44px;
+}
+
+.paragraph {
+  margin-bottom: 30px;
+}
+
+.indent {
+  margin-left: 44px;
+}
+
+.table {
+  display: grid;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 310px 40px auto;
+}
+
+.col1 {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.col2 {
+  text-align: left;
+  min-width: 30px;
+}
+
+.col3 {
+  text-align: left;
+}

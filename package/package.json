@@ -1,0 +1,16 @@
+{
+  "name": "retro-bios",
+  "version": "0.0.1",
+  "description": "90s retro pc boot sequence inspired by Windows 98",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gina-kong/retro-pc-boot-sequence.git"
+  },
+  "keywords": [],
+  "author": "kongji",
+  "license": "MIT"
+}
