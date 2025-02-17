@@ -5,13 +5,39 @@
   font-style: normal;
 }
 
-h3 {
+p {
   font-family: 'PerfectDOS';
   margin: 0;
   color: rgb(172, 172, 172);
+  font-size: 20px;
 }
 
-.loaderContainer {
+.brandText {
+  display: flex;
+  align-items: start;
+}
+
+.paragraphBreak {
+  margin-bottom: 30px;
+}
+
+.deviceCheck {
+  margin-left: 20px;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  margin-top: 5%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5%;
+}
+
+.screen {
   display: flex;
   flex-direction: column;
   padding: 5%;
@@ -19,7 +45,6 @@ h3 {
   width: 100%;
   background-color: black;
   text-align: left;
-  justify-content: space-between;
 }
 
 .energyLogo {
@@ -28,12 +53,14 @@ h3 {
   position: fixed;
   right: 5px;
   top: 5px;
+  image-rendering: pixelated;
 }
 
 .trophyLogo {
-  margin-top: 4px;
+  margin-top: 6px;
   margin-right: 8px;
   max-height: 44px;
+  image-rendering: pixelated;
 }
 
 .paragraph {
