@@ -15,8 +15,18 @@ export const Loader = () => {
     "Howdy"
   ]
 
+  const DEVICETYPES = [
+    "Primary Master",
+    "Primary Slave",
+    "Secondary Master",
+    "Secondary Slave"
+  ]
+
   const [devices, setDevices] = useState(["", "", "", ""])
   const [memory, setMemory] = useState("0")
+  const [biosExtension, setBiosExtension] = useState("")
+  const [copyright, setCopyright] = useState("")
+  const [cursor, setCursor] = useState({"memory": "", "copyright": "", "deviceCheck": ["", "", "", ""]})
 
   useEffect(() => {
     const bootSequence = async () => {
@@ -29,18 +39,25 @@ export const Loader = () => {
 
   const checkMemory = async () => {
     return new Promise((resolve) => {
-      const BLOCK = 18;
-      const MAX = 32768;
+      const BLOCK = 64;
+      const MIN = 640;
+      const MAX = 65536;
       let mem = 0;
-
-      for (let i = 0; i < MAX; i = i + BLOCK) {
+      const newCursor = {...cursor}
+      
+      for (let i = MIN; i < MAX; i = i + BLOCK) {
         setTimeout(() => {
           mem = i;
           setMemory(`${mem}K`)
+          newCursor.memory = "_"
+          setCursor(newCursor)
         }, i / BLOCK)
       }
+      console.log(cursor)
 
       setTimeout(() => {
+        newCursor.memory = ""
+        setCursor(newCursor)
         setMemory(`${mem}K OK`)
         resolve();
       }, MAX / BLOCK - 1200)
@@ -49,27 +66,45 @@ export const Loader = () => {
 
   const checkDevices = async () => {
     const detectedDevices = [...devices]
+    const newCursor = {...cursor}
 
-    const detectDevice = async (index, label, delay = 2000) => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setCopyright("Copyright (C) 1997, Trophy Software, Inc.")
+        setBiosExtension("Trophy Plug and Play BIOS Extension v1.0A")
+        newCursor.copyright = "_"
+        setCursor(newCursor)
+        resolve()
+      }, 2000);
+    })
+
+    const detectDevice = async (index, delay = 2000) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          detectedDevices[index] = `Detecting IDE ${label}... ${DEVICES[index]}`;
-          setDevices([...detectedDevices])
+          if (index == 0) {
+            newCursor.copyright = ""
+            setCursor(newCursor)
+          }
+          if (index != DEVICES.length) {
+            newCursor.deviceCheck[index] = "_"
+            setCursor({...newCursor})
+            detectedDevices[index] = `Detecting IDE ${DEVICETYPES[index].padEnd(16, " ")}... [Press F4 to skip]`;
+            setDevices([...detectedDevices])
+          }
+          if (index > 0) {
+            newCursor.deviceCheck[index - 1] = ""
+            setCursor({...newCursor})
+            detectedDevices[index - 1] = `Detecting IDE ${DEVICETYPES[index - 1].padEnd(16, " ")}... ${DEVICES[index - 1]}`;
+            setDevices([...detectedDevices])
+          }
           resolve();
         }, delay);
       })
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    detectedDevices[0] = `Detecting IDE Primary Master... ${DEVICES[0]}`
-    setDevices([...detectedDevices])
-    console.log(devices)
-
-    await detectDevice(1, "Primary Slave")
-    await detectDevice(2, "Secondary Master")
-    await detectDevice(3, "Secondary Slave")
-
-    console.log(devices)
+    for (let i = 0; i <= DEVICES.length; i++) {
+      await detectDevice(i)
+    }
   }
 
   return (
@@ -92,18 +127,18 @@ export const Loader = () => {
           <p className={styles.paragraphBreak}>
             HEXIUM-5 CPU at 128MHz
             <br />
-            Memory Test :&emsp;&emsp; <span className="memory">{memory}</span>
+            Memory Test :&emsp;&emsp; <span className="memory">{memory}<span className={styles.cursor}>{cursor.memory}</span></span>
           </p>
 
           <p className={styles.paragraphBreak}>
-            Trophy Plug and Play BIOS Extension v1.0A
+            {biosExtension}
             <br />
-            Copyright (C) 1997, Trophy Software, Inc.
+            {copyright}<span className={styles.cursor}>{cursor.copyright}</span>
           </p>
 
           <div className={styles.deviceCheck}>
             {devices.map((text, index) => (
-              <p key={index} className={styles.deviceCheck}>{text}</p>
+              <p key={index} className={styles.deviceCheck}>{text}<span className={styles.cursor}>{cursor.deviceCheck[index]}</span></p>
             ))}
           </div>
 
